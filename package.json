@@ -7,43 +7,30 @@
     "start": "node backend/server.js"
   },
   "dependencies": {
-  "@cerebras/cerebras_cloud_sdk": "^1.59.0",
-  "bcryptjs": "^2.4.3",
-  "body-parser": "^1.20.2",
-  "cookie-parser": "^1.4.6",
-  "cors": "^2.8.5",
-  "discord.js": "^14.15.3",
-  "dotenv": "^16.4.0",
-  "express": "^4.18.2",
-  "jsonwebtoken": "^9.0.2",
-  "node-fetch": "^3.3.2",
-  "uuid": "^9.0.1",
-  "mongoose": "^8.0.0",             // MongoDB ODM
-  "pg": "^8.11.0",                  // PostgreSQL client
-  "mysql2": "^3.9.4",               // MySQL client
-  "morgan": "^1.10.0",              // HTTP request logger
-  "winston": "^3.9.0",              // Versatile logger
-  "multer": "^1.4.5-lts.1",         // File upload middleware
-  "express-session": "^1.17.3",     // Session management
-  "helmet": "^7.0.0",               // Security middleware
-  "compression": "^1.7.4",          // Gzip compression
-  "socket.io": "^4.7.6",            // Real-time communication
-  "ejs": "^3.1.9",                  // Templating engine
-  "pug": "^3.0.2",                  // Another templating engine
-  "nodemailer": "^6.9.3",           // Email sending
-  "axios": "^1.6.7",                // HTTP requests client
-  "validator": "^13.9.0"            // Data validation
-},
-"devDependencies": {
-  "nodemon": "^3.0.2",              // Auto-reloading for dev
-  "eslint": "^8.56.0",              // JavaScript linting
-  "prettier": "^3.2.5",             // Code formatting
-  "jest": "^29.7.0",                // Testing framework
-  "supertest": "^6.3.3",            // HTTP assertions for testing
-  "cross-env": "^7.0.3",            // Environment variable support
-  "husky": "^8.0.3",                // Git hooks
-  "lint-staged": "^15.2.2",         // Lint-staged git commits
-  "webpack": "^5.89.0",             // Module bundler
-  "babel-cli": "^7.22.10",          // JavaScript compiler
-  "babel-preset-env": "^7.22.10"    // Babel environment preset
+    "@cerebras/cerebras_cloud_sdk": "^1.59.0",
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.3",
+    "socket.io": "^4.7.6",
+    "uuid": "^9.0.1",
+    "validator": "^13.9.0",
+    "winston": "^3.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
