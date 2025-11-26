@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor - khxzi.com</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        /* Full screen editor */
+        .editor-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr 400px;
+            height: calc(100vh - 70px);
+            /* Minus navbar */
+        }
+
+        .sidebar {
+            background: rgba(0, 0, 0, 0.5);
+            border-right: 1px solid var(--glass-border);
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .editor-main {
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .code-area {
+            flex: 1;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .code-area:focus {
+            outline: none;
+        }
+
+        .preview-pane {
+            background: white;
+        }
+
+        .file-item {
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            color: #aaa;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .toolbar {
+            padding: 0.5rem;
+            background: #111;
+            border-bottom: 1px solid #333;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass-panel"
+        style="border-radius: 0; border: none; border-bottom: 1px solid var(--glass-border);">
+        <div class="logo" style="font-size: 1.2rem;">Khxzi <span
+                style="color: white; font-weight: normal;">Editor</span></div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="editor-layout">
+        <div class="sidebar">
+            <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
+                <button id="newFileBtn" class="btn btn-secondary" style="padding: 0.2rem 0.5rem; font-size: 0.8rem;">+
+                    New</button>
+                <button id="deleteFileBtn" class="btn btn-secondary"
+                    style="padding: 0.2rem 0.5rem; font-size: 0.8rem; color: #ff4444;">Del</button>
+            </div>
+            <div id="fileList">
+                <!-- Files injected here -->
+            </div>
+        </div>
+
+        <div class="editor-main">
+            <div class="toolbar">
+                <span id="currentFileLabel" style="color: #aaa; font-size: 0.9rem;">No file selected</span>
+                <button id="saveBtn" class="btn"
+                    style="padding: 0.2rem 1rem; font-size: 0.8rem; margin-left: auto;">Save</button>
+            </div>
+            <textarea id="editor" class="code-area" spellcheck="false"></textarea>
+        </div>
+
+        <div class="preview-pane">
+            <iframe id="previewFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/editor.js"></script>
+</body>
+
+</html>

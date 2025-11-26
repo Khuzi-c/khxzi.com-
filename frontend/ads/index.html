@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads - Khxzi</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header fade-in">
+            <h1>Khxzi Ads</h1>
+            <p>Promote your content across the Khxzi network.</p>
+        </div>
+
+        <div class="glass-panel fade-in">
+            <form id="adForm">
+                <div class="form-group">
+                    <label>Discord ID</label>
+                    <input type="text" id="discordId" placeholder="e.g. 1342119031552872489" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Link (Website or Discord)</label>
+                    <input type="url" id="link" placeholder="https://..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Banner / Ad Image</label>
+                    <div class="drop-zone" id="dropZone">
+                        <p>Drag & Drop or Click to Upload</p>
+                        <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;">
+                    </div>
+                    <div id="previewContainer" style="display: none; margin-top: 1rem;">
+                        <img id="imagePreview" style="max-width: 100%; border-radius: 8px;">
+                        <video id="videoPreview" controls
+                            style="max-width: 100%; border-radius: 8px; display: none;"></video>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn glow-hover" style="width: 100%; margin-top: 1rem;">Submit Ad</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

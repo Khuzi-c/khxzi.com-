@@ -1,0 +1,252 @@
+font-family: 'Inter', sans-serif;
+}
+
+.container {
+max-width: 1000px;
+margin: 0 auto;
+padding: 3rem 2rem;
+}
+
+h1 {
+font-size: 2.5rem;
+margin-bottom: 0.5rem;
+background: linear-gradient(135deg, #ff0000, #ff6b6b);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+color: #888;
+margin-bottom: 2rem;
+}
+
+.status-header {
+background: rgba(0, 255, 0, 0.1);
+border: 1px solid rgba(0, 255, 0, 0.3);
+border-radius: 8px;
+padding: 1.5rem;
+margin-bottom: 2rem;
+text-align: center;
+}
+
+.status-header h2 {
+color: #00ff00;
+margin: 0;
+}
+
+.status-table {
+width: 100%;
+border-collapse: collapse;
+background: rgba(255, 255, 255, 0.03);
+border-radius: 12px;
+overflow: hidden;
+}
+
+.status-table thead {
+background: rgba(255, 0, 0, 0.1);
+}
+
+.status-table th {
+padding: 1rem;
+text-align: left;
+font-weight: 600;
+color: #ff6b6b;
+}
+
+.status-table td {
+padding: 1rem;
+border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-table tr:hover {
+background: rgba(255, 255, 255, 0.05);
+}
+
+.status-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.4rem 0.8rem;
+border-radius: 20px;
+font-size: 0.9rem;
+font-weight: 600;
+}
+
+.status-operational {
+background: rgba(0, 255, 0, 0.1);
+color: #00ff00;
+border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.status-limited {
+background: rgba(255, 200, 0, 0.1);
+color: #ffc800;
+border: 1px solid rgba(255, 200, 0, 0.3);
+}
+
+.status-dev {
+background: rgba(100, 150, 255, 0.1);
+color: #6496ff;
+border: 1px solid rgba(100, 150, 255, 0.3);
+}
+
+.status-icon {
+font-size: 0.8rem;
+}
+
+.back-button {
+display: inline-block;
+background: #ff0000;
+color: white;
+padding: 1rem 2rem;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 600;
+margin-top: 2rem;
+transition: transform 0.2s;
+}
+
+.back-button:hover {
+transform: scale(1.05);
+}
+
+.legend {
+display: flex;
+gap: 1.5rem;
+margin: 2rem 0;
+flex-wrap: wrap;
+}
+
+.legend-item {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📊 Khxzi Service Status</h1>
+        <p class="subtitle">Real-time updates on the availability & performance of Khxzi services.</p>
+
+        <div class="status-header">
+            <h2>🟢 All systems operational (Some in Development)</h2>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="status-badge status-operational"><span class="status-icon">🟢</span> Operational</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge status-limited"><span class="status-icon">🟡</span> Limited</span>
+            </div>
+            <div class="legend-item">
+                <span class="status-badge status-dev"><span class="status-icon">🔵</span> In Development</span>
+            </div>
+        </div>
+
+        <table class="status-table">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Khxzi Website</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span>
+                            Operational</span></td>
+                </tr>
+                <tr>
+                    <td>Database (Internal Minimal Storage)</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Login API</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Discord Integration</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span>
+                            Operational</span></td>
+                </tr>
+                <tr>
+                    <td>Webhook Chat</td>
+                    <td><span class="status-badge status-limited"><span class="status-icon">🟡</span> Limited (Under
+                            Dev)</span></td>
+                </tr>
+                <tr>
+                    <td>Ticket System</td>
+                    <td><span class="status-badge status-dev"><span class="status-icon">🔵</span> In Development</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Games System</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Profiles</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Profile Uploads</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Custom Domains</td>
+                    <td><span class="status-badge status-limited"><span class="status-icon">🟡</span> Limited</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Leveling System</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>YouTube Integration</td>
+                    <td><span class="status-badge status-limited"><span class="status-icon">🟡</span> Not Usable (Under
+                            Dev)</span></td>
+                </tr>
+                <tr>
+                    <td>Roblox Integration</td>
+                    <td><span class="status-badge status-limited"><span class="status-icon">🟡</span> Not Usable (Under
+                            Dev)</span></td>
+                </tr>
+                <tr>
+                    <td>Telegram Integration</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GitHub Integration</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>LastFM Integration</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Discord Presence</td>
+                    <td><span class="status-badge status-operational"><span class="status-icon">🟢</span> Fast</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center;">
+            <a href="/" class="back-button">← Back to Home</a>
+            <a href="/about" class="back-button">📖 About & FAQ</a>
+        </div>
+    </div>
+</body>
+
+</html>

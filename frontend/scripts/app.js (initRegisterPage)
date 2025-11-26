@@ -1,0 +1,4 @@
+const userIdInput = q('#userId', form);
+const userIdRaw = userIdInput?.value?.trim() || '';
+// include userId in payload
+const payload = { email, username: usernameRaw, password, userId: userIdRaw };

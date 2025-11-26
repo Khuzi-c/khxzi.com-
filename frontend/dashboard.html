@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard - Khxzi</title>
+	<link rel="stylesheet" href="/styles/main.css">
+	<link rel="stylesheet" href="/styles/themes.css">
+	<link rel="stylesheet" href="/styles/animations.css">
+	<style>
+		body {
+			overflow: hidden;
+			background: #000;
+			color: white;
+			font-family: 'Inter', sans-serif;
+		}
+
+		/* Dashboard layout handles scroll */
+		.dashboard-layout {
+			display: grid;
+			grid-template-columns: 250px 1fr 400px;
+			/* Sidebar, Editor, Preview */
+			height: 100vh;
+		}
+
+		.sidebar {
+			background: rgba(10, 10, 10, 0.9);
+			border-right: 1px solid #333;
+			padding: 2rem 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			z-index: 10;
+		}
+
+		.sidebar-item {
+			padding: 1rem;
+			border-radius: 8px;
+			cursor: pointer;
+			color: #aaa;
+			transition: all 0.3s;
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			font-weight: 500;
+		}
+
+		.sidebar-item:hover,
+		.sidebar-item.active {
+			background: rgba(255, 255, 255, 0.1);
+			color: white;
+		}
+
+		.sidebar-item.active {
+			border-left: 3px solid var(--primary-color);
+		}
+
+		.main-content {
+			padding: 2rem;
+			overflow-y: auto;
+			position: relative;
+			background: #111;
+		}
+
+		.preview-pane {
+			background: #000;
+			border-left: 1px solid #333;
+			display: flex;
+			flex-direction: column;
+			padding: 1rem;
+		}
+
+		.mobile-frame {
+			width: 100%;
+			height: 100%;
+			border: 8px solid #333;
+			border-radius: 24px;
+			overflow: hidden;
+			background: white;
+			position: relative;
+		}
+
+		iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+
+		.section {
+			display: none;
+			animation: fadeIn 0.3s ease;
+		}
+
+		.section.active {
+			display: block;
+		}
+
+		.glass-panel {
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			padding: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.form-group {
+			margin-bottom: 1.5rem;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 0.5rem;
+			color: #ccc;
+			font-size: 0.9rem;
+		}
+
+		input[type="text"],
+		textarea,
+		select {
+			width: 100%;
+			padding: 0.8rem;
+			background: rgba(0, 0, 0, 0.3);
+			border: 1px solid #444;
+			border-radius: 6px;
+			color: white;
+			font-family: inherit;
+		}
+
+		input[type="text"]:focus,
+		textarea:focus,
+		select:focus {
+			outline: none;
+			border-color: var(--primary-color);
+		}
+
+		.btn {
+			padding: 0.8rem 1.5rem;
+			border-radius: 6px;
+			border: none;
+			cursor: pointer;
+			font-weight: 600;
+			transition: all 0.2s;
+		}
+
+		.btn-primary {
+			background: var(--primary-color);
+			color: white;
+		}
+
+		.btn-secondary {
+			background: rgba(255, 255, 255, 0.1);
+			color: white;
+		}
+
+		.media-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+
+		.media-item {
+			background: rgba(0, 0, 0, 0.3);
+			border: 1px solid #333;
+			padding: 0.8rem;
+			border-radius: 8px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 0.8rem;
+			transition: all 0.2s;
+		}
+
+		.media-item:hover {
+			border-color: #666;
+		}
+
+		.media-item.selected {
+			border-color: var(--primary-color);
+			background: rgba(var(--primary-rgb), 0.1);
+		}
+
+		.drop-zone {
+			border: 2px dashed #444;
+			padding: 2rem;
+			text-align: center;
+			border-radius: 12px;
+			margin-bottom: 1rem;
+			transition: all 0.3s;
+			cursor: pointer;
+		}
+
+		.drop-zone:hover,
+		.drop-zone.dragover {
+			border-color: var(--primary-color);
+			background: rgba(255, 255, 255, 0.05);
+		}
+
+		.link-item {
+			display: flex;
+			gap: 0.5rem;
+			align-items: center;
+			background: rgba(0, 0, 0, 0.2);
+			padding: 0.8rem;
+			border-radius: 6px;
+			margin-bottom: 0.5rem;
+		}
+
+		.drag-handle {
+			cursor: move;
+			color: #666;
+			padding: 0 0.5rem;
+		}
+
+		/* Responsive */
+		@media (max-width: 1024px) {
+			.dashboard-layout {
+				grid-template-columns: 200px 1fr;
+			}
+
+			.preview-pane {
+				display: none;
+				/* Hide preview on smaller screens or make it a modal */
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="dashboard-layout">
+		<!-- Sidebar -->
+		<aside class="sidebar">
+			<div class="logo" style="margin-bottom: 2rem; text-align: center; font-size: 1.5rem; font-weight: bold;">
+				Khxzi
+			</div>
+
+			<div class="sidebar-item active" onclick="navigateTo('/dashboard/profile')">
+				<span>👤</span> Profile
+			</div>
+			<div class="sidebar-item" onclick="navigateTo('/dashboard/links')">
+				<span>🔗</span> Links
+			</div>
+			<div class="sidebar-item" onclick="navigateTo('/dashboard/media')">
+				<span>🎵</span> Media & FX
+			</div>
+			<div class="sidebar-item" onclick="navigateTo('/dashboard/analytics')">
+				<span>📊</span> Analytics
+			</div>
+			<div class="sidebar-item" onclick="window.location.href='/editor'">
+				<span>💻</span> Code Editor
+			</div>
+
+			<div style="margin-top: auto;">
+				<div id="usernameDisplay" style="margin-bottom: 1rem; text-align: center; color: #888;"></div>
+				<button onclick="logout()" class="btn btn-secondary" style="width: 100%;">Logout</button>
+			</div>
+		</aside>
+
+		<!-- Main Content -->
+		<main class="main-content">
+
+			<!-- Profile Section -->
+			<div id="profile" class="section active">
+				<h2 style="margin-bottom: 2rem;">Edit Profile</h2>
+
+				<div class="glass-panel">
+					<h3>Basic Info</h3>
+					<div style="display: flex; gap: 2rem; align-items: start; margin-top: 1.5rem;">
+						<div style="text-align: center;">
+							<img id="avatarPreview" src="/assets/khxzilogo.png" class="avatar"
+								style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #333;">
+							<div class="drop-zone" id="avatarDropZone"
+								style="margin-top: 1rem; padding: 0.5rem; font-size: 0.8rem;">
+								<p>Change Avatar</p>
+								<input type="file" id="avatarInput" accept="image/*" style="display: none;">
+							</div>
+						</div>
+
+						<div style="flex: 1;">
+							<div class="form-group">
+								<label>Bio</label>
+								<textarea id="bioInput" rows="3" placeholder="Tell us about yourself..."></textarea>
+							</div>
+
+							<div class="form-group">
+								<label>Theme</label>
+								<select id="themeSelect">
+									<option value="red-black">Red & Black</option>
+									<option value="blue-dark">Blue & Dark</option>
+									<option value="light-minimal">Light Minimal</option>
+									<option value="cyberpunk">Cyberpunk</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<button id="saveProfileBtn" class="btn btn-primary">Save Changes</button>
+				</div>
+
+				<div class="glass-panel">
+					<h3>Discord Integration</h3>
+					<p style="color: #aaa; margin-bottom: 1rem;">Link your Discord account to display your badge and
+						status.</p>
+
+					<div id="discordStatus">
+						<!-- Populated by JS -->
+						<button id="linkDiscordBtn" class="btn" style="background: #5865F2; color: white;">
+							<!-- Links rendered here -->
+					</div>
+					<button onclick="addLink()" class="btn btn-secondary" style="width: 100%; margin-top: 1rem;">+ Add
+						Link</button>
+					<button id="saveLinksBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Save
+						Links</button>
+				</div>
+			</div>
+
+			<!-- Media Section -->
+			<div id="media" class="section">
+				<h2 style="margin-bottom: 2rem;">Media & Effects</h2>
+
+				<div class="glass-panel">
+					<h3>Background Music</h3>
+					<div class="drop-zone" id="musicDropZone">
+						<p>Upload Custom Music (.mp3)</p>
+						<input type="file" id="musicInput" accept="audio/*" style="display: none;">
+					</div>
+					<div id="systemMusic" class="media-grid">
+						<!-- System music injected here -->
+					</div>
+				</div>
+
+				<div class="glass-panel">
+					<h3>Background Video</h3>
+					<div class="drop-zone" id="videoDropZone">
+						<p>Upload Custom Video (.mp4)</p>
+						<input type="file" id="videoInput" accept="video/*" style="display: none;">
+					</div>
+					<div id="systemVideo" class="media-grid">
+						<!-- System video injected here -->
+					</div>
+				</div>
+
+				<div class="glass-panel">
+					<h3>Custom Cursor</h3>
+					<div id="systemCursor" class="media-grid">
+						<!-- System cursors injected here -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Analytics Section -->
+			<div id="analytics" class="section">
+				<h2 style="margin-bottom: 2rem;">Analytics</h2>
+				<div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+					<div class="glass-panel" style="text-align: center;">
+						<h3 style="color: #aaa;">Total Views</h3>
+						<div id="totalViews" style="font-size: 4rem; font-weight: bold; color: var(--primary-color);">0
+						</div>
+					</div>
+					<div class="glass-panel">
+						<h3>Link Clicks</h3>
+						<div id="linkClicks">
+							<!-- Clicks list -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+		<!-- Preview Pane -->
+		<aside class="preview-pane">
+			<h3 style="margin-bottom: 1rem; text-align: center; color: #666;">Live Preview</h3>
+			<div class="mobile-frame">
+				<iframe id="previewFrame" src="/profile-preview.html"></iframe>
+			</div>
+		</aside>
+	</div>
+
+	<script src="/scripts/app.js"></script>
+	<script src="/scripts/dashboard.js"></script>
+</body>
+
+</html>

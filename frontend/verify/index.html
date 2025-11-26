@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify - Khxzi</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/animations.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container fade-in">
+        <div class="verify-card glass-panel">
+            <div class="icon-container">
+                <img src="/assets/khxzilogo.png" alt="Khxzi" class="logo">
+            </div>
+            <h1>Verification</h1>
+            <p>Verify your Discord account to access the full server.</p>
+
+            <div id="statusMessage" style="display: none; margin: 1rem 0; padding: 1rem; border-radius: 8px;"></div>
+
+            <button id="verifyBtn" class="btn glow-hover" onclick="window.location.href='/api/verify/login'">
+                Verify with Discord
+            </button>
+
+            <div class="server-info">
+                <p><strong>Server:</strong> Khxzi Network</p>
+                <p><strong>Members:</strong> <span id="memberCount">Loading...</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

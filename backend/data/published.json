@@ -1,0 +1,25 @@
+{
+  "profiles": {
+    "khxzibxtt": {
+      "username": "khxzibxtt",
+      "theme": "purple-haze",
+      "lastPublishedAt": "2025-11-26T10:59:54.121Z",
+      "linkCount": 2,
+      "version": 1
+    },
+    "support@khxzi.com": {
+      "username": "support@khxzi.com",
+      "theme": "red-black",
+      "lastPublishedAt": "2025-11-26T12:59:27.480Z",
+      "linkCount": 1,
+      "version": 2
+    },
+    "Khxzi": {
+      "username": "Khxzi",
+      "theme": "red-black",
+      "lastPublishedAt": "2025-11-26T13:03:05.532Z",
+      "linkCount": 2,
+      "version": 1
+    }
+  }
+}

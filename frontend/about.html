@@ -1,0 +1,306 @@
+color: #fff;
+font-family: 'Inter', sans-serif;
+line-height: 1.6;
+}
+
+.container {
+max-width: 900px;
+margin: 0 auto;
+padding: 3rem 2rem;
+}
+
+h1 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+background: linear-gradient(135deg, #ff0000, #ff6b6b);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+h2 {
+color: #ff0000;
+margin-top: 3rem;
+margin-bottom: 1rem;
+font-size: 1.8rem;
+}
+
+h3 {
+color: #ff6b6b;
+margin-top: 2rem;
+margin-bottom: 0.5rem;
+}
+
+.intro {
+font-size: 1.1rem;
+margin-bottom: 2rem;
+color: #ccc;
+}
+
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+margin: 2rem 0;
+}
+
+.feature-card {
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 0, 0, 0.2);
+border-radius: 12px;
+padding: 1.5rem;
+transition: transform 0.2s;
+}
+
+.feature-card:hover {
+transform: translateY(-5px);
+border-color: rgba(255, 0, 0, 0.5);
+}
+
+.feature-icon {
+font-size: 2rem;
+margin-bottom: 1rem;
+}
+
+.faq-item {
+background: rgba(255, 255, 255, 0.03);
+border-left: 3px solid #ff0000;
+padding: 1.5rem;
+margin-bottom: 1.5rem;
+border-radius: 8px;
+}
+
+.faq-question {
+font-weight: 600;
+font-size: 1.1rem;
+margin-bottom: 0.8rem;
+color: #fff;
+}
+
+.faq-answer {
+color: #aaa;
+}
+
+.faq-answer ul {
+margin: 0.5rem 0;
+padding-left: 1.5rem;
+}
+
+.beta-badge {
+display: inline-block;
+background: #ff0000;
+color: white;
+padding: 0.3rem 0.8rem;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 600;
+margin-left: 0.5rem;
+}
+
+.cta-button {
+display: inline-block;
+background: #ff0000;
+color: white;
+padding: 1rem 2rem;
+border-radius: 8px;
+text-decoration: none;
+font-weight: 600;
+margin: 1rem 0.5rem 1rem 0;
+transition: transform 0.2s;
+}
+
+.cta-button:hover {
+transform: scale(1.05);
+}
+
+.important-box {
+background: rgba(255, 200, 0, 0.1);
+border: 1px solid rgba(255, 200, 0, 0.3);
+border-radius: 8px;
+padding: 1rem;
+margin: 1.5rem 0;
+}
+
+.important-box strong {
+color: #ffc800;
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Khxzi <span class="beta-badge">V1 BETA</span></h1>
+
+        <p class="intro">
+            A free, simple, developer-driven platform built for users, communities, and creativity.
+        </p>
+
+        <p>
+            Khxzi started as a small dev project focused on making easy-to-use tools without complicated setups or paid
+            databases. Everything in Khxzi is designed to be:
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Fast</h3>
+                <p>We focus on speed and lightweight design so even low-end devices enjoy a smooth experience.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Safe</h3>
+                <p>No unnecessary data collection — only what's needed to provide your account and features.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧑‍💻</div>
+                <h3>Developer Friendly</h3>
+                <p>Powered by a small team working on website features, Discord integration, tickets, chat, premium
+                    tools, games, and leveling.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Free & Fun</h3>
+                <p>Most features are completely free, and V1/Beta allows users to test new systems early.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Connected</h3>
+                <p>We connect Khxzi with Discord using bots, webhooks, presence integration, support tickets, and
+                    community chat.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h3>Join the Khxzi community:</h3>
+            <a href="/discord" class="cta-button"><i class="fab fa-discord"></i> Join Discord</a>
+        </div>
+
+        <h2>FAQ (V1 / Beta)</h2>
+
+        <div class="important-box">
+            <strong>Important:</strong> Khxzi V1 is currently in Beta. Some features (chat, integrations, etc.) may be
+            unavailable or limited while under development.
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">1. How do I make an account on Khxzi?</div>
+            <div class="faq-answer">
+                You can log in using:
+                <ul>
+                    <li>Discord OAuth</li>
+                    <li>Custom Profile Login (Name + PFP + Auto-Login via IP)</li>
+                </ul>
+                Some login features may be unstable due to Beta.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">2. Where do I get support?</div>
+            <div class="faq-answer">
+                Open a support ticket at: <a href="/support" style="color: #ff6b6b;">khxzi.com/support</a><br>
+                (Support system is under development — response may be limited.)
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">3. How do I verify my account?</div>
+            <div class="faq-answer">
+                Go to: <a href="/verify" style="color: #ff6b6b;">khxzi.com/verify</a><br>
+                Verification logs are sent to Discord automatically.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">4. How do I chat with the community?</div>
+            <div class="faq-answer">
+                Use the "Chat With Community" button on the dashboard. It connects you to Discord general chat via
+                Webhooks.<br><br>
+                <em>Chat system is currently under development and may not fully work.</em><br>
+                Join Discord directly here: <a href="/discord" style="color: #ff6b6b;">khxzi.com/discord</a>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">5. How do I get Premium?</div>
+            <div class="faq-answer">
+                Go to: <a href="/premium" style="color: #ff6b6b;">/premium</a><br>
+                Enter a Premium Key or get one at our Discord.<br><br>
+                Premium includes:
+                <ul>
+                    <li>No ads</li>
+                    <li>Custom domain: username.khxzi.com</li>
+                    <li>Premium badge</li>
+                    <li>Special integrations</li>
+                    <li>Priority support</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">6. What does V1/Beta mean?</div>
+            <div class="faq-answer">
+                Since you're using Beta, some features may:
+                <ul>
+                    <li>Break randomly</li>
+                    <li>Not load</li>
+                    <li>Have "Under Development" tags</li>
+                    <li>Be unavailable depending on your account type</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">7. How do staff log in?</div>
+            <div class="faq-answer">
+                Staff use their @khxzi.com emails & passwords to access:
+                <ul>
+                    <li>/admin for staff panel</li>
+                    <li>/owner for owner controls</li>
+                </ul>
+                Owners can also:
+                <ul>
+                    <li>Generate staff accounts</li>
+                    <li>Link Discord IDs</li>
+                    <li>Generate Premium Keys</li>
+                    <li>Manage system data</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">8. Is the leveling & game system ready?</div>
+            <div class="faq-answer">
+                Basic V1 is working:
+                <ul>
+                    <li>Earn coins</li>
+                    <li>Earn XP</li>
+                    <li>Unlock badges</li>
+                </ul>
+                But Shop, More games, and Rewards are under development.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">9. Is Khxzi safe?</div>
+            <div class="faq-answer">
+                We auto-filter:
+                <ul>
+                    <li>Slurs</li>
+                    <li>Harassment</li>
+                    <li>Harmful words</li>
+                </ul>
+                Your data is minimal and never sold.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 4rem 0 2rem 0;">
+            <a href="/" class="cta-button">← Back to Home</a>
+            <a href="/status" class="cta-button">📊 Service Status</a>
+        </div>
+    </div>
+</body>
+
+</html>

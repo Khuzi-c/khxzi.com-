@@ -1,0 +1,74 @@
+/* Themes CSS */
+
+/* Red/Black (Default) */
+.theme-red-black {
+	--bg-color: #050505;
+	--text-color: #ffffff;
+	--primary-color: #ff0000;
+	--glass-bg: rgba(20, 0, 0, 0.4);
+	--glass-border: rgba(255, 0, 0, 0.2);
+}
+
+/* Dark */
+.theme-dark {
+	--bg-color: #000000;
+	--text-color: #e0e0e0;
+	--primary-color: #ffffff;
+	--glass-bg: rgba(255, 255, 255, 0.05);
+	--glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Light */
+.theme-light {
+	--bg-color: #f0f0f0;
+	--text-color: #1a1a1a;
+	--primary-color: #000000;
+	--glass-bg: rgba(0, 0, 0, 0.05);
+	--glass-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Neon Red */
+.theme-neon-red {
+	--bg-color: #0a0000;
+	--text-color: #ffcccc;
+	--primary-color: #ff0033;
+	--glass-bg: rgba(255, 0, 50, 0.1);
+	--glass-border: rgba(255, 0, 50, 0.3);
+}
+
+/* Matrix Green */
+.theme-matrix-green {
+	--bg-color: #000a00;
+	--text-color: #00ff00;
+	--primary-color: #00ff00;
+	--glass-bg: rgba(0, 255, 0, 0.05);
+	--glass-border: rgba(0, 255, 0, 0.2);
+	font-family: 'Courier New', monospace;
+}
+
+/* Blue */
+.theme-blue {
+	--bg-color: #000510;
+	--text-color: #e0f0ff;
+	--primary-color: #0088ff;
+	--glass-bg: rgba(0, 100, 255, 0.1);
+	--glass-border: rgba(0, 100, 255, 0.3);
+}
+
+/* Pink */
+.theme-pink {
+	--bg-color: #100005;
+	--text-color: #ffe0f0;
+	--primary-color: #ff66aa;
+	--glass-bg: rgba(255, 100, 150, 0.1);
+	--glass-border: rgba(255, 100, 150, 0.3);
+}
+
+/* Neon */
+.theme-neon {
+	--bg-color: #050510;
+	--text-color: #ffffff;
+	--primary-color: #cc00ff;
+	--glass-bg: rgba(200, 0, 255, 0.1);
+	--glass-border: rgba(200, 0, 255, 0.3);
+}

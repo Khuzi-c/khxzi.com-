@@ -1,0 +1,169 @@
+{
+  "users": [
+    {
+      "username": "Khxzi",
+      "password": "$2b$12$RLJIUknhatgbs9k9845cz.Go31HnmIpfEWvXRnMD9fnQsD7rLqOVi",
+      "avatar": "http://localhost:3001/assets/no_bg%20khxzi%20logo.png",
+      "bio": "System Administrator\n\nand Dev @ Khxzi Devs",
+      "links": [
+        {
+          "id": "link_1764162178751_0",
+          "label": "Website",
+          "url": "https://khxzi.com/",
+          "icon": "",
+          "clicks": 0
+        },
+        {
+          "id": "link_1764162178751_1",
+          "label": "Discord",
+          "url": "https://khxzi.com",
+          "icon": "",
+          "clicks": 0
+        }
+      ],
+      "theme": "red-black",
+      "isAdmin": true,
+      "createdAt": "2025-11-26T12:00:00.000Z",
+      "updatedAt": "2025-11-26T13:02:58.751Z",
+      "lastLoginAt": "2025-11-26T13:00:55.085Z",
+      "bgMusic": "/uploads/Khxzi_1764162176146.mp3",
+      "bgVideo": "/uploads/Khxzi_1764162166059.mp4"
+    },
+    {
+      "username": "khxzibxtt",
+      "password": null,
+      "authProvider": "discord",
+      "discordId": "1342119031552872489",
+      "email": "khuzibutt15@gmail.com",
+      "avatar": "https://cdn.discordapp.com/avatars/1342119031552872489/663325797582a26efe19e05a056eeb49.png",
+      "bio": "http://lkhxzi.com/discord",
+      "links": [
+        {
+          "id": "link_1764154792164_0",
+          "label": "Discord",
+          "url": "http://lkhxzi.com/discord",
+          "icon": "",
+          "clicks": 0
+        },
+        {
+          "id": "link_1764154792164_1",
+          "label": "Website",
+          "url": "http://lkhxzi.com/discord",
+          "icon": "",
+          "clicks": 0
+        }
+      ],
+      "theme": "purple-haze",
+      "createdAt": "2025-11-26T10:58:03.002Z",
+      "updatedAt": "2025-11-26T12:08:47.927Z",
+      "discord": {
+        "id": "1342119031552872489",
+        "username": "khxzi_bxtt",
+        "discriminator": "0",
+        "avatar": "663325797582a26efe19e05a056eeb49",
+        "email": "khuzibutt15@gmail.com",
+        "flags": 4194368,
+        "public_flags": 4194368,
+        "accessToken": "MTQ0Mjg0MzMxNzU5MDAzNjU2Mg.DlSV0LxZ8f7zooPw2Ir7RBb9HLXUjG",
+        "refreshToken": "0R7Ad5ipJ0BIBHhNYOAtLrmLgd7QFE",
+        "joinedServer": true,
+        "linkedAt": "2025-11-26T10:58:03.002Z"
+      }
+    },
+    {
+      "username": "support@khxzi.com",
+      "password": "$2b$12$iLBxX6U/1pdCCd9l2iOtcuwcjNQgailTAg9aUJS2y6b/HpOm2f7jy",
+      "avatar": "http://localhost:3001/assets/no_bg%20khxzi%20logo.png",
+      "bio": "I am building a complete link-shortening system for my website Khxzi.com.  \nI need you to generate a full, production-ready implementation — frontend, backend, APIs, admin tools, and ad system.\n\nTHIS IS FOR A REAL PROJECT.  \nWrite clean, commented, secure code.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSYSTEM NAME:\nKhxzi Link System (V1 — Beta)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nGENERAL REQUIREMENTS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n• No database required unless necessary — but JSON stor",
+      "links": [
+        {
+          "id": "link_1764160620272_0",
+          "label": "test",
+          "url": "67",
+          "icon": "",
+          "clicks": 0
+        }
+      ],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T11:23:41.015Z",
+      "updatedAt": "2025-11-26T12:59:25.347Z",
+      "lastLoginAt": "2025-11-26T12:18:07.354Z",
+      "bgMusic": "/uploads/support@khxzi.com_1764161963601.mp3",
+      "bgVideo": "/uploads/support@khxzi.com_1764161955399.mp4"
+    },
+    {
+      "username": "test account",
+      "password": "$2b$12$pKUr.jWF.aVhvbahqCrnCuPn6XEfIm61e.729fxDMKjejTX/Hf/RG",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T11:27:25.501Z",
+      "updatedAt": "2025-11-26T11:27:25.501Z",
+      "lastLoginAt": "2025-11-26T11:27:25.504Z"
+    },
+    {
+      "username": "testuser",
+      "password": "$2b$12$C2gx8mHbbpUSqJlGxWzByOVCO9PAQ2L50ayLMAjnabhrpYSyRN50W",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T11:29:26.422Z",
+      "updatedAt": "2025-11-26T11:29:26.422Z",
+      "lastLoginAt": "2025-11-26T11:29:39.997Z"
+    },
+    {
+      "username": "testers",
+      "password": "$2b$12$Zw4xyUXa3P65VPqgA52Z8u7P2ScT5lR/upR3JJcDZGOtC2LAMocGW",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T11:35:52.819Z",
+      "updatedAt": "2025-11-26T11:35:52.820Z"
+    },
+    {
+      "username": "khxzi bxtt test acc",
+      "password": "$2b$12$Q6cqA.eafUZLshX3q9zCGO/2n7Kk64QpzF86aV3gvZngVIZsCu7YO",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T11:36:05.877Z",
+      "updatedAt": "2025-11-26T11:36:05.877Z",
+      "lastLoginAt": "2025-11-26T11:36:05.880Z"
+    },
+    {
+      "username": "teste",
+      "password": "$2b$12$DVxpdpYT.3dqs9Z21MrWUuIP8dG2RgE3rgerOOIanvKShUmiNElZi",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T12:04:44.581Z",
+      "updatedAt": "2025-11-26T12:04:44.581Z"
+    },
+    {
+      "username": "support@khxzi",
+      "password": "$2b$12$PGh2cwYCi0i8phryXlOLa.D1yXJnlKmIOfbIgQ6Kn86ROL18ouVIm",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T12:04:53.835Z",
+      "updatedAt": "2025-11-26T12:04:53.835Z",
+      "lastLoginAt": "2025-11-26T12:05:01.705Z"
+    },
+    {
+      "username": "khuzibutt15@gmail.com",
+      "password": "$2b$12$DzNsQpJYpzIvcUKtnC1mbeg8eAREJqHrEI.ZRPKguIzux8CYkNmBa",
+      "avatar": "",
+      "bio": "",
+      "links": [],
+      "theme": "red-black",
+      "createdAt": "2025-11-26T13:00:29.716Z",
+      "updatedAt": "2025-11-26T13:00:29.717Z"
+    }
+  ]
+}

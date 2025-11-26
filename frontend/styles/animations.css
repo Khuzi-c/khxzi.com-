@@ -1,0 +1,55 @@
+/* Animations CSS */
+
+.fade-in {
+	animation: fadeIn 0.8s ease-out forwards;
+	opacity: 0;
+}
+
+.slide-up {
+	animation: slideUp 0.6s ease-out forwards;
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Glow Hover */
+.glow-hover:hover {
+	box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Button Press */
+.btn:active {
+	transform: scale(0.95);
+}
+
+/* Loading Spinner */
+.spinner {
+	border: 3px solid rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	border-top: 3px solid var(--primary-color);
+	width: 24px;
+	height: 24px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

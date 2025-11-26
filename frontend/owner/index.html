@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard - Khxzi</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body {
+            background: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .owner-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(10, 10, 10, 0.9);
+            border-right: 1px solid #333;
+            padding: 2rem 1rem;
+        }
+
+        .sidebar-item {
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #aaa;
+            transition: all 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--primary-color);
+        }
+
+        .content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="owner-layout">
+        <div class="sidebar">
+            <h2 style="color: var(--primary-color); margin-bottom: 2rem;">👑 Owner Panel</h2>
+            <div class="sidebar-item active" onclick="window.location.href='/owner'">📊 Dashboard</div>
+            <div class="sidebar-item" onclick="window.location.href='/owner/ads'">📢 Ads</div>
+            <div class="sidebar-item" onclick="window.location.href='/owner/tickets'">🎫 Tickets</div>
+            <div class="sidebar-item" onclick="window.location.href='/owner/staff'">🛡️ Staff</div>
+            <div class="sidebar-item" onclick="logout()">🚪 Logout</div>
+        </div>
+
+        <div class="content">
+            <h1>Dashboard Overview</h1>
+            <p style="color: #888; margin-bottom: 3rem;">Welcome back, Owner!</p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                <div class="stat-card">
+                    <div style="color: #888; margin-bottom: 0.5rem;">Total Users</div>
+                    <div class="stat-value" id="totalUsers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div style="color: #888; margin-bottom: 0.5rem;">Premium Users</div>
+                    <div class="stat-value" id="premiumUsers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div style="color: #888; margin-bottom: 0.5rem;">Pending Ads</div>
+                    <div class="stat-value" id="pendingAds">0</div>
+                </div>
+                <div class="stat-card">
+                    <div style="color: #888; margin-bottom: 0.5rem;">Open Tickets</div>
+                    <div class="stat-value" id="openTickets">0</div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3>Quick Actions</h3>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                    <button class="btn" onclick="generateKey()">Generate Premium Key</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='/owner/staff'">Manage
+                        Staff</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='/owner/ads'">Review Ads</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/app.js"></script>
+    <script>
+        async function loadStats() {
+            try {
+                const users = await fetch('/api/admin/users').then(r => r.json());
+                const premium = await fetch('/api/premium/users').then(r => r.json());
+                const ads = await fetch('/api/ads/all').then(r => r.json());
+                const tickets = await fetch('/api/tickets/all').then(r => r.json());
+
+                document.getElementById('totalUsers').textContent = users.length || 0;
+                document.getElementById('premiumUsers').textContent = premium.filter(p => p.active).length || 0;
+                document.getElementById('pendingAds').textContent = ads.filter(a => a.status === 'pending').length || 0;
+                document.getElementById('openTickets').textContent = tickets.filter(t => t.status === 'Open').length || 0;
+            } catch (err) {
+                console.error('Load stats error:', err);
+            }
+        }
+
+        async function generateKey() {
+            const duration = prompt('Enter duration (e.g., 7d, 1m, 1y):');
+            if (!duration) return;
+
+            try {
+                const res = await fetch('/api/premium/generate-key', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ duration })
+                });
+                const data = await res.json();
+                alert(`Key generated: ${data.key.key}`);
+            } catch (err) {
+                alert('Failed to generate key');
+            }
+        }
+
+        async function logout() {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            window.location.href = '/owner/login';
+        }
+
+        loadStats();
+    </script>
+</body>
+
+</html>

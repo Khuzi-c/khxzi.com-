@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Khxzi</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body {
+            background: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            margin-bottom: 1rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <h1>🛡️ Admin Dashboard</h1>
+        <p style="color: #888; margin-bottom: 3rem;">Staff Panel - Manage platform operations</p>
+
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <div class="stat-card">
+                <div style="color: #888; margin-bottom: 0.5rem;">Pending Ads</div>
+                <div class="stat-value" id="pendingAds">0</div>
+            </div>
+            <div class="stat-card">
+                <div style="color: #888; margin-bottom: 0.5rem;">Open Tickets</div>
+                <div class="stat-value" id="openTickets">0</div>
+            </div>
+            <div class="stat-card">
+                <div style="color: #888; margin-bottom: 0.5rem;">Total Users</div>
+                <div class="stat-value" id="totalUsers">0</div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h3>Quick Actions</h3>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                <a href="/owner/ads" class="btn">Review Ads</a>
+                <a href="/owner/tickets" class="btn btn-secondary">View Tickets</a>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/app.js"></script>
+    <script>
+        async function loadStats() {
+            try {
+                const ads = await fetch('/api/ads/all').then(r => r.json());
+                const tickets = await fetch('/api/tickets/all').then(r => r.json());
+                const users = await fetch('/api/admin/users').then(r => r.json()).catch(() => []);
+
+                document.getElementById('pendingAds').textContent = ads.filter(a => a.status === 'pending').length || 0;
+                document.getElementById('openTickets').textContent = tickets.filter(t => t.status === 'Open').length || 0;
+                document.getElementById('totalUsers').textContent = users.length || 0;
+            } catch (err) {
+                console.error('Load stats error:', err);
+            }
+        }
+
+        async function logout() {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            window.location.href = '/admin';
+        }
+
+        loadStats();
+    </script>
+</body>
+
+</html>

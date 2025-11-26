@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard - Khxzi</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body {
+            background: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(10, 10, 10, 0.9);
+            border-right: 1px solid #333;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+        }
+
+        .sidebar-item {
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .sidebar-item:hover,
+        .sidebar-item.active {
+            background: rgba(255, 0, 0, 0.2);
+        }
+
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            background: var(--primary-color);
+            color: white;
+            margin-right: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        input,
+        select {
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: white;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">👑 Owner Panel</h2>
+            <div class="sidebar-item active" onclick="showSection('dashboard')">📊 Dashboard</div>
+            <div class="sidebar-item" onclick="showSection('staff')">👥 Staff Management</div>
+            <div class="sidebar-item" onclick="showSection('premium')">🌟 Premium Keys</div>
+            <div class="sidebar-item" onclick="showSection('ads')">📢 Ads</div>
+            <div class="sidebar-item" onclick="showSection('tickets')">🎫 Tickets</div>
+            <div class="sidebar-item" onclick="showSection('users')">👤 Users</div>
+            <button onclick="logout()" class="btn" style="width: 100%; margin-top: 2rem;">Logout</button>
+        </aside>
+
+        <main class="main-content">
+            <div id="dashboard" class="section">
+                <h1>Dashboard</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div>Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalAds">0</div>
+                        <div>Total Ads</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalTickets">0</div>
+                        <div>Open Tickets</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="premiumUsers">0</div>
+                        <div>Premium Users</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="staff" class="section" style="display:none;">
+                <h1>Staff Management</h1>
+                <div class="glass-panel">
+                    <h3>Add New Staff</h3>
+                    <input type="email" id="staffEmail" placeholder="Email (e.g., staff@khxzi.com)">
+                    <input type="password" id="staffPassword" placeholder="Password">
+                    <input type="text" id="staffDiscordId" placeholder="Discord User ID (optional)">
+                    <button class="btn" onclick="addStaff()">Add Staff</button>
+                </div>
+                <h2>All Staff</h2>
+                <div class="glass-panel">
+                    <table id="staffTable">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Discord ID</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="premium" class="section" style="display:none;">
+                <h1>Generate Premium Key</h1>
+                <div class="glass-panel">
+                    <select id="keyDuration">
+                        <option value="1d">1 Day</option>
+                        <option value="7d">7 Days</option>
+                        <option value="30d">30 Days</option>
+                        <option value="1m">1 Month</option>
+                        <option value="3m">3 Months</option>
+                        <option value="6m">6 Months</option>
+                        <option value="1y">1 Year</option>
+                    </select>
+                    <input type="text" id="keyNotes" placeholder="Optional notes">
+                    <button class="btn" onclick="generateKey()">Generate Key</button>
+                    <div id="generatedKey" style="margin-top: 1rem; font-size: 1.5rem; color: gold; display: none;">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (section === 'staff') loadStaff();
+        }
+
+        async function addStaff() {
+            const email = document.getElementById('staffEmail').value;
+            const password = document.getElementById('staffPassword').value;
+            const discordId = document.getElementById('staffDiscordId').value;
+
+            const res = await fetch('/api/admin/add-staff', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, discordId })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                alert('Staff added successfully!');
+                loadStaff();
+                document.getElementById('staffEmail').value = '';
+                document.getElementById('staffPassword').value = '';
+                document.getElementById('staffDiscordId').value = '';
+            } else {
+                alert(data.error || 'Failed to add staff');
+            }
+        }
+
+        async function loadStaff() {
+            const res = await fetch('/api/admin/staff');
+            const staff = await res.json();
+            const tbody = document.querySelector('#staffTable tbody');
+            tbody.innerHTML = staff.map(s => `
+                <tr>
+                    <td>${s.email}</td>
+                    <td>${s.discordId || '-'}</td>
+                    <td>${new Date(s.createdAt).toLocaleDateString()}</td>
+                    <td><button class="btn" onclick="deleteStaff('${s.id}')">Delete</button></td>
+                </tr>
+            `).join('');
+        }
+
+        async function deleteStaff(id) {
+            if (!confirm('Delete this staff member?')) return;
+            await fetch(`/api/admin/staff/${id}`, { method: 'DELETE' });
+            loadStaff();
+        }
+
+        async function generateKey() {
+            const duration = document.getElementById('keyDuration').value;
+            const notes = document.getElementById('keyNotes').value;
+
+            const res = await fetch('/api/premium/generate-key', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ duration, notes })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                document.getElementById('generatedKey').textContent = `Key: ${data.key.key}`;
+                document.getElementById('generatedKey').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            document.cookie = 'khxzi_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            window.location.href = '/owner/login.html';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Khxzi</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+
+<body>
+    <div class="container" style="max-width: 500px; margin-top: 8rem;">
+        <div class="glass-panel fade-in">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="color: var(--primary-color); margin-bottom: 0.5rem;">🛡️ Admin Portal</h2>
+                <p style="color: #888; font-size: 0.9rem;">Staff Access Only</p>
+            </div>
+
+            <form id="adminLoginForm">
+                <input type="text" id="adminUsername" placeholder="Admin Username" required>
+                <input type="password" id="adminPassword" placeholder="Admin Password" required>
+
+                <div
+                    style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px;">
+                    <p style="color: #ffc107; font-size: 0.85rem; margin: 0;">
+                        ⚠️ This area is restricted to authorized staff members only. Unauthorized access attempts are
+                        logged.
+                    </p>
+                </div>
+
+                <button type="submit" class="btn glow-hover" style="width: 100%;">
+                    Access Admin Panel
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.5rem; color: #666; font-size: 0.85rem;">
+                <a href="/" style="color: #888;">← Back to Home</a>
+            </p>
+        </div>
+
+        <div id="adminMessage" style="margin-top: 2rem; text-align: center; color: #888; font-size: 0.9rem;">
+            Admin panel functionality will be integrated soon.
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            // Placeholder - will be implemented later
+            document.getElementById('adminMessage').innerHTML = `
+                <div class="glass-panel" style="padding: 1.5rem; background: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3);">
+                    <p style="color: #ff4444; margin: 0;">
+                        ⚠️ Admin authentication system is not yet implemented. Please check back later.
+                    </p>
+                </div>
+            `;
+        });
+    </script>
+</body>
+
+</html>

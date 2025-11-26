@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>khxzi.com - Create Your Bio</title>
+    <link rel="icon" type="image/png" href="/assets/no_bg khxzi logo.png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+
+<body>
+    <nav class="navbar glass-panel" style="padding: 1.5rem 2rem;">
+        <div class="logo"><img src="/assets/no bg khxzi full logo.png" alt="Khxzi" style="height: 80px;"></div>
+        <div class="nav-links" style="display: flex; align-items: center; gap: 1rem;">
+            <div id="notificationBell" onclick="toggleNotifications()"
+                style="position: relative; cursor: pointer; padding: 0.5rem;">
+                <span style="font-size: 1.5rem;">🔔</span>
+                <div id="notificationBadge"
+                    style="display: none; position: absolute; top: 0; right: 0; background: #ff0000; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 0.7rem; font-weight: bold; align-items: center; justify-content: center;">
+                    0</div>
+            </div>
+            <div id="userProfile" style="display: none; align-items: center; gap: 0.8rem;">
+                <img id="userAvatar" src="" alt="Profile"
+                    style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color);">
+                <span id="userName" style="font-weight: 600;"></span>
+                <a href="/dashboard" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Dashboard</a>
+            </div>
+            <div id="authButtons">
+                <a href="/login" class="btn btn-secondary">Login</a>
+                <a href="/register" class="btn">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="notificationPanel"
+        style="display: none; position: fixed; top: 70px; right: 20px; width: 400px; max-height: 500px; background: rgba(10, 10, 10, 0.95); border: 1px solid #333; border-radius: 12px; z-index: 1000; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+        <div style="padding: 1rem; border-bottom: 1px solid #333; font-weight: bold; color: var(--primary-color);">📢
+            Notifications</div>
+        <div id="notificationsList" style="max-height: 400px; overflow-y: auto;"></div>
+    </div>
+
+    <div
+        style="background: linear-gradient(90deg, #330000 0%, #660000 100%); padding: 1rem; text-align: center; border-bottom: 2px solid var(--primary-color);">
+        <p style="margin: 0; color: #ffcccc; font-size: 0.95rem;">⚠️ <strong>BETA VERSION</strong> - This is the first
+            version released. Features may malfunction. Nothing is guaranteed. Stay tuned for updates! 🚀</p>
+    </div>
+
+    <main class="container" style="text-align: center; margin-top: 5rem;">
+        <h1 class="fade-in" style="font-size: 4rem; margin-bottom: 1rem;">Create Your <span
+                style="color: var(--primary-color)">Ultimate</span> Bio</h1>
+        <p class="slide-up" style="font-size: 1.2rem; color: #aaa; margin-bottom: 2rem;">The most advanced bio link
+            platform for creators, gamers, and developers.</p>
+
+        <!-- Username Claim Section -->
+        <div class="slide-up" style="max-width: 600px; margin: 0 auto 3rem auto;">
+            <div class="glass-panel" style="padding: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Everything you want, right here.</h3>
+                <p style="color: #aaa; margin-bottom: 1.5rem;">Join the community and create your ultimate bio link.</p>
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                    <input type="text" id="usernameInput" placeholder="Enter your username"
+                        style="flex: 1; padding: 1rem; background: rgba(0,0,0,0.5); border: 1px solid #333; border-radius: 8px; color: white; font-size: 1rem;"
+                        onkeypress="if(event.key==='Enter') claimUsername()">
+                    <button onclick="claimUsername()" class="btn glow-hover" style="padding: 1rem 2rem;">Claim
+                        Now</button>
+                </div>
+                <p style="color: #666; font-size: 0.9rem;">khxzi.com/@<span id="usernamePreview">username</span></p>
+            </div>
+        </div>
+
+        <!-- Quick Profile Access -->
+        <div class="slide-up" style="max-width: 500px; margin: 0 auto 3rem auto;">
+            <p style="color: #888; margin-bottom: 0.8rem;">Looking for someone?</p>
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="profileLookup" placeholder="@username"
+                    style="flex: 1; padding: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 8px; color: white;"
+                    onkeypress="if(event.key==='Enter') goToProfile()">
+                <button onclick="goToProfile()" class="btn btn-secondary">Go</button>
+            </div>
+        </div>
+
+        <div class="grid-2 slide-up" style="margin-top: 5rem; text-align: left;">
+            <div class="glass-panel">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">For Creators</h3>
+                <p>Showcase your links, socials, and content in a beautiful, customizable profile.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer
+        style="margin-top: 8rem; padding: 5rem 2rem 3rem; background: linear-gradient(180deg, transparent 0%, #050505 20%); border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="glass-panel"
+                style="background: linear-gradient(135deg, rgba(26, 5, 5, 0.8) 0%, rgba(10, 0, 0, 0.6) 100%); border: 1px solid #330000; margin-bottom: 5rem; text-align: center; padding: 4rem 2rem; border-radius: 16px;">
+                <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem; font-weight: 700;">Everything you want, <span
+                        style="color: var(--primary-color);">right here.</span></h2>
+                <p style="color: #aaa; margin-bottom: 2.5rem; font-size: 1.1rem;">Join the community and create your
+                    ultimate bio link.</p>
+                <div
+                    style="display: flex; gap: 1rem; justify-content: center; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+                    <div
+                        style="background: rgba(0, 0, 0, 0.6); padding: 1rem 1.5rem; border-radius: 12px; color: #666; flex: 1; min-width: 250px; text-align: left; border: 1px solid #222;">
+                        khxzi.com/username</div>
+                    <a href="/register" class="btn glow-hover" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Claim
+                        Now</a>
+                </div>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 4rem;">
+                <div style="grid-column: span 1;">
+                    <div class="logo" style="margin-bottom: 1.5rem;"><img src="/assets/no bg khxzi full logo.png"
+                            alt="Khxzi" style="height: 50px;"></div>
+                    <p style="color: #888; max-width: 300px; margin-bottom: 1.5rem; line-height: 1.6;">Create
+                        feature-rich, customizable and modern link-in-bio pages with Khxzi.</p>
+                    <div style="display: flex; gap: 1rem;"><a href="https://discord.com/users/1342119031552872489"
+                            target="_blank" style="color: #aaa; font-size: 1.8rem; transition: color 0.3s;"
+                            onmouseover="this.style.color='var(--primary-color)'"
+                            onmouseout="this.style.color='#aaa'">💬</a></div>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem; color: #fff;">General</h4>
+                    <ul style="list-style: none; color: #888; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><a href="/login" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Login</a></li>
+                        <li><a href="/register" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Sign Up</a></li>
+                        <li><a href="/ads" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Ads</a></li>
+                        <li><a href="/support" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem; color: #fff;">Legal</h4>
+                    <ul style="list-style: none; color: #888; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><a href="/tos" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Terms of Service</a></li>
+                        <li><a href="/privacy-policy" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Privacy Policy</a></li>
+                        <li><a href="/about" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">About & FAQ</a></li>
+                        <li><a href="/status" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Status</a></li>
+                        <li><a href="/sitemap" style="transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--primary-color)'"
+                                onmouseout="this.style.color='#888'">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #222; color: #666; font-size: 0.95rem; text-align: center;">
+                Copyright © 2025 Khxzi. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <style>
+        .notification-item {
+            padding: 1rem;
+            border-bottom: 1px solid #222;
+            transition: background 0.3s;
+        }
+
+        .notification-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/notifications.js"></script>
+    <script>
+        // Update username preview
+        document.getElementById('usernameInput')?.addEventListener('input', (e) => {
+            const preview = document.getElementById('usernamePreview');
+            if (preview) preview.textContent = e.target.value || 'username';
+        });
+
+        // Claim username function
+        function claimUsername() {
+            const username = document.getElementById('usernameInput')?.value.trim();
+            if (username) {
+                window.location.href = `/register?username=${encodeURIComponent(username)}`;
+            }
+        }
+
+        // Go to profile function
+        function goToProfile() {
+            let username = document.getElementById('profileLookup')?.value.trim();
+            if (username) {
+                // Remove @ if present
+                username = username.replace(/^@/, '');
+                window.location.href = `/@${encodeURIComponent(username)}`;
+            }
+        }
+
+        // Check if user is logged in and update navbar
+        async function updateNavbar() {
+            try {
+                const auth = await checkAuth();
+                if (auth && auth.user) {
+                    const user = auth.user;
+                    document.getElementById('authButtons').style.display = 'none';
+                    const userProfile = document.getElementById('userProfile');
+                    userProfile.style.display = 'flex';
+                    document.getElementById('userName').textContent = user.username || user.discord?.username || 'User';
+                    document.getElementById('userAvatar').src = user.avatar || user.discord?.avatar || '/assets/no_bg khxzi logo.png';
+                }
+            } catch (e) {
+                // User not logged in, keep default buttons
+            }
+        }
+
+        // Run on page load
+        if (typeof checkAuth !== 'undefined') {
+            updateNavbar();
+        }
+    </script>
+</body>
+
+</html>
